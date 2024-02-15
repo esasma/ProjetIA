@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <img src="/public/images/logoiaa.jpg" alt="Votre logo" class="logo">
     <video autoplay loop muted class="video-bg" preload="auto">
       <source src="/public/images/bust_-_42670 (1080p).mp4" type="video/mp4">
     </video>
@@ -18,31 +19,6 @@
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue';
-
-const greetings = [
-  { lang: 'English', text: 'Hello!' }, // Anglais
-  { lang: 'Mandarin', text: '你好！' }, // Mandarin (Chinois)
-  { lang: 'Spanish', text: '¡Hola!' }, // Espagnol
-  { lang: 'Hindi', text: 'नमस्ते!' }, // Hindi
-  { lang: 'French', text: 'Bonjour !' }, // Français
-  { lang: 'Standard Arabic', text: 'مرحباً!' }, // Arabe standard
-  { lang: 'Bengali', text: 'হ্যালো!' } // Bengali
-];
-const greetingIndex = ref(0);
-const greeting = ref(greetings[0].text);
-
-const changeGreeting = () => {
-  greetingIndex.value = (greetingIndex.value + 1) % greetings.length;
-  greeting.value = greetings[greetingIndex.value].text;
-};
-
-onMounted(() => {
-  setInterval(changeGreeting, 3000); // Change every 3 seconds
-});
-</script>
-
 <style lang="scss" scoped>
 .page {
   position: relative;
@@ -52,6 +28,15 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center; /* Centrer verticalement */
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 9999; 
+  width: 6rem;
+  border-radius: 200px;
 }
 
 .video-bg {
